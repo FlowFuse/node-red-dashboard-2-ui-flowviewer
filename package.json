@@ -1,0 +1,73 @@
+{
+    "name": "@flowfuse/node-red-dashboard-2-ui-flowviewer",
+    "version": "1.0.0",
+    "description": "A Node-RED Dashboard 2.0 widget that allows you to visualise Node-RED flows in your Dashboard using FlowFuse's flow-renderer",
+    "keywords": [
+        "node-red",
+        "node-red-dashboard-2"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/FlowFuse/node-red-dashboard-2-ui-flowviewer.git"
+    },
+    "license": "Apache-2.0",
+    "author": {
+        "name": "Joe Pavitt",
+        "url": "https://github.com/joepavitt"
+    },
+    "exports": {
+        "import": "./resources/ui-flowviewer.esm.js",
+        "require": "./resources/ui-flowviewer.umd.js"
+    },
+    "files": [
+        "dist/*",
+        "nodes/*",
+        "ui/*",
+        "resources/*"
+    ],
+    "scripts": {
+        "build": "vite build",
+        "build:dev": "NODE_ENV=development vite build",
+        "dev": "NODE_ENV=development vite build --watch",
+        "dev:prod": "vite build --watch",
+        "lint": "npm run lint:js && npm run lint:package",
+        "lint:fix": "npm run lint:js:fix && npm run lint:package:fix",
+        "lint:js": "eslint --ext .js,.vue,.cjs,.mjs .",
+        "lint:js:fix": "yarn lint:js --fix",
+        "lint:package": "sort-package-json --check 'package.json'",
+        "lint:package:fix": "sort-package-json 'package.json'"
+    },
+    "dependencies": {
+        "@flowfuse/flow-renderer": "^0.4.1",
+        "vue": "^3.3.8",
+        "vuex": "^4.1.0"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "^4.5.0",
+        "eslint": "^8.53.0",
+        "eslint-config-standard": "^17.1.0",
+        "eslint-plugin-import": "^2.29.0",
+        "eslint-plugin-n": "^16.3.1",
+        "eslint-plugin-vue": "^9.18.1",
+        "vite": "^5.0.13",
+        "vite-plugin-css-injected-by-js": "^3.3.0"
+    },
+    "engines": {
+        "node": ">=14"
+    },
+    "node-red": {
+        "version": ">=3.0.0",
+        "nodes": {
+            "ui-flowviewer": "nodes/ui-flowviewer.js"
+        }
+    },
+    "node-red-dashboard-2": {
+        "version": "1.13.0",
+        "widgets": {
+            "ui-flowviewer": {
+                "output": "ui-flowviewer.umd.js",
+                "component": "UIFlowViewer"
+            }
+        }
+    }
+}

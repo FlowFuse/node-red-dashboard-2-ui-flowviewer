@@ -1,0 +1,11 @@
+.nrdb-ui-flowviewer-container {
+    width: 100%;
+    border: none;
+    min-width: 0;
+    display: grid;
+}
+
+.nrdb-ui-flowviewer-container .flow-renderer {
+    height: 100%;
+    min-width: 0;
+}

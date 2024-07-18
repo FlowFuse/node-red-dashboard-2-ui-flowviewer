@@ -1,0 +1,64 @@
+<script type="text/javascript">
+    RED.nodes.registerType('ui-flowviewer', {
+        category: RED._('@flowfuse/node-red-dashboard/ui-base:ui-base.label.category'),
+        color: RED._('@flowfuse/node-red-dashboard/ui-base:ui-base.colors.dark'),
+        defaults: {
+            name: { value: "" },
+            group: { type: 'ui-group', required: true },
+            order: { value: 0 },
+            width: {
+                value: 6,
+                validate: function (v) {
+                    const width = v || 0
+                    const currentGroup = $('#node-input-group').val() || this.group
+                    const groupNode = RED.nodes.node(currentGroup)
+                    const valid = !groupNode || +width <= +groupNode.width
+                    $('#node-input-size').toggleClass('input-error', !valid)
+                    return valid
+                }
+            },
+            flow: { value: "" },
+            height: { value: 8 }
+        },
+        inputs: 1,
+        outputs: 0,
+        icon: "flow-icon.svg",
+        paletteLabel: 'flow viewer',
+        label: function() {
+            return this.name || "flow viewer";
+        },
+        oneditprepare: function () {
+            $('#node-input-size').elementSizer({
+                width: '#node-input-width',
+                height: '#node-input-height',
+                group: '#node-input-group'
+            });
+
+            $("#node-input-flow").typedInput({
+                type:"json",
+                types:["json"]
+            })
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="ui-flowviewer">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-group"><i class="fa fa-table"></i> Group</label>
+        <input type="text" id="node-input-group">
+    </div>
+    <div class="form-row">
+        <label><i class="fa fa-object-group"></i> <span data-i18n="ui-iframe.label.size"></label>
+        <input type="hidden" id="node-input-width">
+        <input type="hidden" id="node-input-height">
+        <button class="editor-button" id="node-input-size"></button>
+    </div>
+    <div class="form-row">
+        <label for="node-input-flow"><i class="fa fa-random"></i> Flow</label>
+        <input type="text" id="node-input-flow">
+    </div>
+</script>

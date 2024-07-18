@@ -1,0 +1,188 @@
+[
+    {
+        "id": "09750cf19cc702b7",
+        "type": "ui-flowviewer",
+        "z": "2cb19a726f098046",
+        "name": "",
+        "group": "c1499e10fc3a9745",
+        "order": 3,
+        "width": "6",
+        "flow": "[     {         \"id\": \"f4cdf82fc16b02f7\",         \"type\": \"debug\",         \"z\": \"2cb19a726f098046\",         \"name\": \"debug 392\",         \"active\": true,         \"tosidebar\": true,         \"console\": false,         \"tostatus\": false,         \"complete\": \"false\",         \"statusVal\": \"\",         \"statusType\": \"auto\",         \"x\": 210,         \"y\": 60,         \"wires\": []     },     {         \"id\": \"124288051376866a\",         \"type\": \"inject\",         \"z\": \"2cb19a726f098046\",         \"name\": \"\",         \"props\": [             {                 \"p\": \"payload\"             },             {                 \"p\": \"topic\",                 \"vt\": \"str\"             }         ],         \"repeat\": \"\",         \"crontab\": \"\",         \"once\": false,         \"onceDelay\": 0.1,         \"topic\": \"\",         \"payload\": \"\",         \"payloadType\": \"date\",         \"x\": 60,         \"y\": 60,         \"wires\": [             [                 \"f4cdf82fc16b02f7\"             ]         ]     } ]",
+        "height": "8",
+        "x": 550,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "ab6560884fcc246c",
+        "type": "ui-button",
+        "z": "2cb19a726f098046",
+        "group": "c1499e10fc3a9745",
+        "name": "",
+        "label": "Flow 1",
+        "order": 1,
+        "width": "3",
+        "height": "1",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "[     {         \"id\": \"f934285bc1a6f9a9\",         \"type\": \"inject\",         \"z\": \"2cb19a726f098046\",         \"name\": \"\",         \"props\": [             {                 \"p\": \"payload\"             },             {                 \"p\": \"topic\",                 \"vt\": \"str\"             }         ],         \"repeat\": \"\",         \"crontab\": \"\",         \"once\": false,         \"onceDelay\": 0.1,         \"topic\": \"\",         \"payload\": \"\",         \"payloadType\": \"date\",         \"x\": 120,         \"y\": 180,         \"wires\": [             [                 \"6e6578d373487422\"             ]         ]     },     {         \"id\": \"6e6578d373487422\",         \"type\": \"debug\",         \"z\": \"2cb19a726f098046\",         \"name\": \"debug 392\",         \"active\": true,         \"tosidebar\": true,         \"console\": false,         \"tostatus\": false,         \"complete\": \"false\",         \"statusVal\": \"\",         \"statusType\": \"auto\",         \"x\": 270,         \"y\": 180,         \"wires\": []     } ]",
+        "payloadType": "json",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 150,
+        "y": 80,
+        "wires": [
+            [
+                "db39bc746877bf7c"
+            ]
+        ]
+    },
+    {
+        "id": "3826d353382f8037",
+        "type": "ui-button",
+        "z": "2cb19a726f098046",
+        "group": "c1499e10fc3a9745",
+        "name": "",
+        "label": "Flow 2",
+        "order": 2,
+        "width": "3",
+        "height": "1",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "[{\"id\":\"f934285bc1a6f9a9\",\"type\":\"inject\",\"z\":\"2cb19a726f098046\",\"name\":\"\",\"props\":[{\"p\":\"payload\"},{\"p\":\"topic\",\"vt\":\"str\"}],\"repeat\":\"\",\"crontab\":\"\",\"once\":false,\"onceDelay\":0.1,\"topic\":\"\",\"payload\":\"\",\"payloadType\":\"date\",\"x\":200,\"y\":180,\"wires\":[[\"6e6578d373487422\"]]},{\"id\":\"6e6578d373487422\",\"type\":\"debug\",\"z\":\"2cb19a726f098046\",\"name\":\"debug 392\",\"active\":true,\"tosidebar\":true,\"console\":false,\"tostatus\":false,\"complete\":\"false\",\"statusVal\":\"\",\"statusType\":\"auto\",\"x\":200,\"y\":230,\"wires\":[]}]",
+        "payloadType": "json",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 150,
+        "y": 120,
+        "wires": [
+            [
+                "1ab175411b1dda1c"
+            ]
+        ]
+    },
+    {
+        "id": "db39bc746877bf7c",
+        "type": "change",
+        "z": "2cb19a726f098046",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ui_update.flow",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 330,
+        "y": 80,
+        "wires": [
+            [
+                "09750cf19cc702b7"
+            ]
+        ]
+    },
+    {
+        "id": "1ab175411b1dda1c",
+        "type": "change",
+        "z": "2cb19a726f098046",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ui_update.flow",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 330,
+        "y": 120,
+        "wires": [
+            [
+                "09750cf19cc702b7"
+            ]
+        ]
+    },
+    {
+        "id": "c1499e10fc3a9745",
+        "type": "ui-group",
+        "name": "Flow Viewer",
+        "page": "85043ba28e0273fe",
+        "width": "6",
+        "height": "1",
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "85043ba28e0273fe",
+        "type": "ui-page",
+        "name": "Third Party Widgets",
+        "ui": "c2e1aa56f50f03bd",
+        "path": "/third-party",
+        "icon": "account-group",
+        "layout": "grid",
+        "theme": "129e99574def90a3",
+        "order": 6,
+        "className": "",
+        "visible": true,
+        "disabled": "false"
+    },
+    {
+        "id": "c2e1aa56f50f03bd",
+        "type": "ui-base",
+        "name": "Dashboard",
+        "path": "/dashboard",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-control",
+            "ui-notification"
+        ],
+        "showPathInSidebar": false,
+        "showPageTitle": false,
+        "navigationStyle": "icon",
+        "titleBarStyle": "default"
+    },
+    {
+        "id": "129e99574def90a3",
+        "type": "ui-theme",
+        "name": "Custom Theme",
+        "colors": {
+            "surface": "#000000",
+            "primary": "#ff4000",
+            "bgPage": "#f0f0f0",
+            "groupBg": "#ffffff",
+            "groupOutline": "#d9d9d9"
+        },
+        "sizes": {
+            "pagePadding": "24px",
+            "groupGap": "12px",
+            "groupBorderRadius": "9px",
+            "widgetGap": "6px"
+        }
+    }
+]
