@@ -1,0 +1,29 @@
+name: Build and push package
+on:
+  pull_request:
+    branches: 
+      - main
+  push:
+    branches:
+      - main
+
+
+jobs:
+  build:
+      uses: 'flowfuse/github-actions-workflows/.github/workflows/build_node_package.yml@v0.37.0'
+      with:
+        node: '[
+                {"version": "18", "tests": false, "lint": true},
+              ]'
+
+  publish:
+    if: |
+      ( github.event_name == 'push' && github.ref == 'refs/heads/main' ) ||
+      ( github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' )
+    needs: build
+    uses: 'flowfuse/github-actions-workflows/.github/workflows/publish_node_package.yml@v0.37.0'
+    with:
+      package_name: node-red-dashboard-2-ui-flowviewer
+      publish_package: true
+    secrets:
+      npm_registry_token: ${{ secrets.NPM_PUBLISH_TOKEN }}
