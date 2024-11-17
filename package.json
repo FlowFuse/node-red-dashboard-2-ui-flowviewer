@@ -35,7 +35,8 @@
         "lint:js": "eslint --ext .js,.vue,.cjs,.mjs .",
         "lint:js:fix": "yarn lint:js --fix",
         "lint:package": "sort-package-json --check 'package.json'",
-        "lint:package:fix": "sort-package-json 'package.json'"
+        "lint:package:fix": "sort-package-json 'package.json'",
+        "test": "echo \"Error: no tests specified\" && exit 0"
     },
     "dependencies": {
         "@flowfuse/flow-renderer": "^0.4.1",
