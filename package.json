@@ -35,7 +35,8 @@
         "lint:js": "eslint --ext .js,.vue,.cjs,.mjs .",
         "lint:js:fix": "yarn lint:js --fix",
         "lint:package": "sort-package-json --check 'package.json'",
-        "lint:package:fix": "sort-package-json 'package.json'"
+        "lint:package:fix": "sort-package-json 'package.json'",
+        "test": "echo \"Error: no tests specified\" && exit 0"
     },
     "dependencies": {
         "@flowfuse/flow-renderer": "^0.4.1",
@@ -49,6 +50,7 @@
         "eslint-plugin-import": "^2.29.0",
         "eslint-plugin-n": "^16.3.1",
         "eslint-plugin-vue": "^9.18.1",
+        "sort-package-json": "^2.11.0",
         "vite": "^5.0.13",
         "vite-plugin-css-injected-by-js": "^3.3.0"
     },

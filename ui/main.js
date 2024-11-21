@@ -5,6 +5,6 @@
  */
 import { createApp } from 'vue'
 
-import UIIframe from './components/UIIframe.vue'
+import UIFlowViewer from './components/UIFlowViewer.vue'
 
-createApp(UIIframe).mount('#app')
+createApp(UIFlowViewer).mount('#app')
