@@ -1,6 +1,6 @@
 {
     "name": "@flowfuse/node-red-dashboard-2-ui-flowviewer",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "A Node-RED Dashboard 2.0 widget that allows you to visualise Node-RED flows in your Dashboard using FlowFuse's flow-renderer",
     "keywords": [
         "node-red",
@@ -39,7 +39,7 @@
         "test": "echo \"Error: no tests specified\" && exit 0"
     },
     "dependencies": {
-        "@flowfuse/flow-renderer": "^0.4.1",
+        "@flowfuse/flow-renderer": "^0.5.0",
         "vue": "^3.3.8",
         "vuex": "^4.1.0"
     },
