@@ -9,10 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Setup Node.js
-        uses: actions/setup-node@cdca7365b2dadb8aad0a33bc7601856ffabcc48e # v4.3.0
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 24
 
@@ -25,23 +25,37 @@ jobs:
           npm run test
 
       - name: Publish package
-        uses: JS-DevTools/npm-publish@19c28f1ef146469e409470805ea4279d47c3d35c # v3.1.1
+        uses: JS-DevTools/npm-publish@0fd2f4369c5d6bcfcde6091a7c527d810b9b5c3f # v4.1.5
         with:
           token: ${{ secrets.NPM_PUBLISH_TOKEN }}
-      - name: getVersion
+
+  update-nr-catalogue:
+    name: Update Node-RED Catalogue
+    needs: [publish]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Install jq
+        shell: bash
+        run: command -v jq || (sudo apt-get update && sudo apt-get install -y jq)
+      - name: Get package version
         id: getVersion
         shell: bash
         run: |
-          VERSION=$(npm info . --json version | sed -e 's/"//g')
+          VERSION=$(jq -r .version package.json)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
-      - uses: flowfuse/github-actions-workflows/actions/update-nr-flows@update-nr-flows/v1
+      - name: Update Node-RED Catalogue
+        uses: flowfuse/github-actions-workflows/actions/update-nr-flows@update-nr-flows/v1
         with:
           package: '@flowfuse/node-red-dashboard-2-ui-flowviewer'
           version: ${{ steps.getVersion.outputs.version }}
 
   notify-slack:
     name: Notify about release failure
-    needs: [publish]
+    needs: [publish, update-nr-catalogue]
     if: failure()
     runs-on: ubuntu-latest
 
